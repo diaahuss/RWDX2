@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const businessName = document.getElementById('businessName');
     const businessEmail = document.getElementById('businessEmail');
 
-    const serviceID = "service_4b371jn";
-    const templateID = "template_y0f3pw9";
-    const userID = "sz2ImWOwFnVKy4qrF"; // EmailJS API Key
+    // Service and template configuration for EmailJS
+    const emailServiceID = "service_4b371jn";
+    const emailTemplateID = "template_y0f3pw9";
 
     // Login Functionality
     document.getElementById('loginBtn').addEventListener('click', () => {
@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         users[email] = { name, password };
         alert("Signup successful! Please log in.");
 
+        // Clear signup fields
         signupEmail.value = '';
         signupPassword.value = '';
         confirmPassword.value = '';
@@ -97,13 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('transBusinessName').textContent = business;
         document.getElementById('transBusinessEmail').textContent = businessEmailValue;
 
+        // Clear reward fields
         voucherCode.value = '';
         walletAddress.value = '';
         businessName.value = '';
         businessEmail.value = '';
 
-          // EmailJS Send Email
-        emailjs.send("service_4b371jn", "template_y0f3pw9", {
+        // EmailJS Send Email
+        emailjs.send(emailServiceID, emailTemplateID, {
             name: name,
             email: email,
             voucher_code: voucher,
@@ -119,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Failed to send reward data. Please try again.");
         });
     });
-  
+
     // Back Buttons
     document.getElementById('backToReward').addEventListener('click', () => {
         transactionScreen.classList.add('hidden');
@@ -130,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rewardScreen.classList.add('hidden');
         openScreen.classList.remove('hidden');
 
+        // Clear login fields
         openEmail.value = '';
         openPassword.value = '';
     });
